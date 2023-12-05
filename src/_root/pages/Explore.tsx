@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 import useDebounce from "@/hooks/useDebounce";
-import Loader from "@/components/shared/Loader";
-import GridPostList from "@/components/shared/GridPostList";
+import { GridPostList, Loader } from "@/components/shared";
 import {
   useGetPosts,
   useSearchPosts,
@@ -57,7 +56,7 @@ const Explore = () => {
   const shouldShowSearchResults = searchValue !== "";
   const shouldShowPosts =
     !shouldShowSearchResults &&
-    posts.pages.every((item) => item.documents.length === 0);
+    posts.pages.every((item) => item?.documents.length === 0);
 
   return (
     <div className="explore-container">
@@ -107,7 +106,7 @@ const Explore = () => {
           <p className="text-light-4 mt-10 text-center w-full">Fin des posts</p>
         ) : (
           posts.pages.map((item, index) => (
-            <GridPostList key={`page-${index}`} posts={item.documents} />
+            <GridPostList key={`page-${index}`} posts={item?.documents ?? []} />
           ))
         )}
       </div>
