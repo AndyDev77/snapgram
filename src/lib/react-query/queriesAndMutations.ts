@@ -60,17 +60,18 @@ export const useGetPosts = () => {
     queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
     queryFn: getInfinitePosts as any,
     getNextPageParam: (lastPage: any) => {
-      if (!lastPage || lastPage.documents.length === 0) {
+      if (lastPage && lastPage.documents.length === 0) {
         return null;
       }
 
       const lastId = lastPage.documents[lastPage.documents.length - 1].$id;
-
       return lastId;
     },
-    initialPageParam: 0, // Ajout de l'initialPageParam
+    // Add initialPageParam to satisfy the type requirements
+    initialPageParam: null,
   });
 };
+
 
 export const useSearchPosts = (searchTerm: string) => {
   return useQuery({

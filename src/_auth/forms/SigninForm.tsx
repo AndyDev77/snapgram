@@ -44,7 +44,7 @@ const SigninForm = () => {
 
     if (!session) {
       return toast({
-        title: "L'inscription a échoué, veuillez réessayer",
+        title: "La connexion a échouée, veuillez réessayer",
       });
     }
 
@@ -56,7 +56,7 @@ const SigninForm = () => {
       navigate("/");
     } else {
       return toast({
-        title: "L'inscription a échoué, veuillez réessayer",
+        title: "La connexion à échouée, veuillez réessayer",
       });
     }
   }

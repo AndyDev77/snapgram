@@ -78,7 +78,7 @@ const SignupForm = () => {
 
         navigate("/");
       } else {
-        toast({ title: "La connexion a échoué. Veuillez réessayer." });
+        toast({ title: "L'inscription a échoué. Veuillez réessayer." });
 
         return;
       }
